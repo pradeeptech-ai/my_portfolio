@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        section {
+            opacity: 0;
+            /* Sections start hidden */
+            transform: translateY(30px);
+            /* Slightly offset vertically */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            /* Smooth animation */
+        }
+
+        section.in-view {
+            opacity: 1;
+            /* Fade in */
+            transform: translateY(0);
+            /* Reset to original position */
+        }
+    </style>
+   <nav id="mainNav" style="position: static;">
+    <ul style="margin-inline-start: auto; margin-inline-end: auto;">
+        <li style="margin-right: 3px;"><a href="#about">About</a></li>
+        <li style="margin-left: 5px;"><a href="#articles">Articles</a></li> <li style="margin-left: 5px;"><a href="#education">Education</a></li>
+        <li style="margin-left: 5px;"><a href="#skills">Skills</a></li>
+        <li style="margin-left: 5px;"><a href="#projects">Projects</a></li>
+        <li style="margin-left: 5px;"><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const nav = document.getElementById('mainNav');
+        let isFixed = false;
+        let originalOffsetTop = nav.offsetTop;
+
+        function updateNavPosition() {
+            if (window.scrollY >= originalOffsetTop && !isFixed) {
+                nav.style.position = 'fixed';
+                nav.style.top = '0';
+                nav.style.left = '0';
+                nav.style.right = '0';
+                isFixed = true;
+            } else if (window.scrollY < originalOffsetTop && isFixed) {
+                nav.style.position = 'static';
+                isFixed = false;
+            }
+        }
+
+        window.addEventListener('scroll', updateNavPosition);
+
+        // Initial call to set originalOffsetTop after the page loads
+        setTimeout(() => {
+            originalOffsetTop = nav.offsetTop;
+            updateNavPosition();
+        }, 100);
+    });
+</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').slice(1);
+                    const targetElement = document.getElementById(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+    <div style="background-image: url('backgroundimage.jpg');   background-size: cover;background-position: center;height: 80vh;width: -0.9vh;display: flex;flex-direction: column;justify-content: center;align-items: center;text-align: center;color: rgb(0, 0, 0);text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-top: 3%;
+">
+<h1 style="font-size: 3rem;margin: 0;font-weight: bold;margin-right: -50%;">PRADEEP PRADHAN</h1>
+<p style="font-size: 1.5rem;margin: 10px 0 0 0;margin-right: -50%;">MBA - Human Resource</p>
+    </div>
+
+
+    <section id="about" class="section" style="
+    margin-top: 9%;
+    margin-bottom: 15%;
+  overflow-y: auto;
+  max-height: 500px; /* Adjust as needed */
+  padding: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1);
+">
+        <div class="container" style="
+    max-width: 960px;
+    margin: 0 auto;
+  ">
+            <h2 style="
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    ">About Me</h2>
+            <div class="about-content" style="
+            
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    ">
+                <div class="about-img" style="
+        flex-shrink: 0;
+      ">
+                    <img src="profile pic.jpg" alt="Profile Picture" style="
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+          ">
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const images = document.querySelectorAll('.about-img img');
+                        images.forEach(image => {
+                            image.addEventListener('mouseenter', function () {
+                                this.style.transform = 'scale(1.1)';
+                            });
+                            image.addEventListener('mouseleave', function () {
+                                this.style.transform = 'scale(1)';
+                            });
+                        });
+                    });
+                </script>
+                <div class="about-text" style="
+        flex-grow: 1;
+        line-height: 1.6;
+        color: #555;
+      ">
+                    <p style="margin-bottom: 15px;">"As a motivated fresher, I am eager to apply my skills in a
+                        professional setting. I am always
+                        keen to learn,
+                        adapt, and contribute meaningfully to the organization and to my team. My goal is to make a
+                        positive impact
+                        on the organization while enhancing my expertise along the way." </p>
+                    <p style="margin-bottom: 15px;">And whenever I find free time then I used to learn and use new
+                        things and exploring things
+                        according to new technology and very much curious about extra curricular activities like Image
+                        editing, Video editing, reels, Influence people.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* Scrollbar styles (same as before) */
+        #about::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #about::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        #about::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+        }
+
+        #about::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* CSS for the animation states */
+        #about {
+            opacity: 0;
+            /* Initially hidden */
+            transform: translateY(50px);
+            /* Move down slightly */
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        #about.in-view {
+            opacity: 1;
+            /* Fade in */
+            transform: translateY(0);
+            /* Move back to original position */
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const aboutSection = document.getElementById('about');
+
+            function checkInView() {
+                const rect = aboutSection.getBoundingClientRect();
+                const isVisible = (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+
+                if (isVisible && !aboutSection.classList.contains('in-view')) {
+                    aboutSection.classList.add('in-view');
+                }
+                // REMOVE THE ELSE IF BLOCK BELOW
+                // else if (!isVisible && aboutSection.classList.contains('in-view')) {
+                //   aboutSection.classList.remove('in-view');
+                // }
+            }
+
+            window.addEventListener('scroll', checkInView);
+            checkInView(); // Initial check
+        });
+    </script>
+
+
+    <section id="articles"
+        style="margin: 40px 0; padding: 20px; background-color: #f8f9fa; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
+        <h2
+            style="font-size: 2rem; text-align: center; margin-bottom: 20px; color: #333; border-bottom: 2px solid #ddd; padding-bottom: 10px;">
+            My Article</h2>
+        <article
+            style="padding: 20px; background-color: white; border-radius: 10px; box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);">
+            <h3 style="font-size: 1.5rem; color: #007bff; text-align: left;">Employee Retention: Strategies, Challenges,
+                and Best Practices</h3>
+            <p><strong>Introduction:</strong> Employee retention refers to an organization’s ability to retain its
+                employees over a sustained period, reducing turnover and maintaining a stable workforce. High retention
+                rates are crucial for organizational success, leading to improved productivity, lower recruitment costs,
+                and stronger company culture (SHRM, 2022). This article explores the key factors influencing employee
+                retention, challenges across industries, evidence-based strategies, and successful retention programs.
+            </p>
+
+            <h4 style="font-size: 1.2rem; color: #343a40; margin-top: 20px;">The Importance of Employee Retention</h4>
+            <p>Employee retention is critical for organizational success. High turnover disrupts workflow, increases
+                costs, and impacts morale. According to Gallup (2023), replacing an employee can cost up to 1.5–2 times
+                their annual salary. Moreover, long-tenured employees enhance customer satisfaction and team cohesion
+                (Heathfield, 2021).</p>
+
+            <h4 style="font-size: 1.2rem; color: #343a40; margin-top: 20px;">Key Factors Affecting Retention</h4>
+            <ul style="margin-left: 20px;">
+                <li><strong>Workplace Culture:</strong> Inclusive cultures improve engagement (Deloitte, 2022).</li>
+                <li><strong>Compensation & Benefits:</strong> Competitive packages reduce turnover (Payscale, 2023).
+                </li>
+                <li><strong>Career Growth Opportunities:</strong> Clear paths encourage loyalty (LinkedIn, 2023).</li>
+                <li><strong>Work-Life Balance:</strong> Flexibility improves retention (Gartner, 2023).</li>
+                <li><strong>Leadership & Management:</strong> Supportive managers reduce turnover by 50% (Gallup, 2023).
+                </li>
+            </ul>
+
+            <h4 style="font-size: 1.2rem; color: #343a40; margin-top: 20px;">Common Retention Challenges Across
+                Industries</h4>
+            <ul style="margin-left: 20px;">
+                <li><strong>Tech:</strong> High demand for skilled workers leads to poaching; companies like Google
+                    counter this with perks.</li>
+                <li><strong>Healthcare:</strong> Long shifts and burnout cause turnover; mentorship programs help
+                    (Journal of Nursing Management, 2022).</li>
+                <li><strong>Retail:</strong> Low wages and part-time roles drive attrition; Starbucks uses tuition
+                    reimbursement and stock options (Forbes, 2023).</li>
+            </ul>
+
+            <h4 style="font-size: 1.2rem; color: #343a40; margin-top: 20px;">Proven Retention Strategies</h4>
+            <ul style="margin-left: 20px;">
+                <li>Employee engagement: Feedback, recognition, and team-building (Harvard Business Review, 2022).</li>
+                <li>Competitive compensation: Regular salary reviews and bonuses (Payscale, 2023).</li>
+                <li>Upskilling opportunities: Training programs and tuition aid (SHRM, 2023).</li>
+                <li>Flexible work policies: Hybrid models improve satisfaction (McKinsey, 2023).</li>
+                <li>Leadership training: Developing empathetic managers reduces attrition (Gallup, 2023).</li>
+            </ul>
+
+            <h4 style="font-size: 1.2rem; color: #343a40; margin-top: 20px;">Case Studies of Successful Retention
+                Programs</h4>
+            <ul style="margin-left: 20px;">
+                <li><strong>Google:</strong> Career development programs, wellness services, and innovation.</li>
+                <li><strong>Salesforce:</strong> Mental health support and equal pay policies reduce turnover.</li>
+                <li><strong>Starbucks:</strong> Tuition reimbursement reduces turnover by 10% (Forbes, 2023).</li>
+            </ul>
+
+            <h4 style="font-size: 1.2rem; color: #343a40; margin-top: 20px;">Conclusion & Future Trends</h4>
+            <p>Retention remains a top challenge. Combining competitive pay, growth opportunities, and strong leadership
+                ensures success. Future trends include AI-driven analytics, personalized benefits, and four-day
+                workweeks (Gartner, 2023). Investing in retention delivers a competitive edge.</p>
+
+            <h4 style="font-size: 1.2rem; color: #343a40; margin-top: 20px;">References</h4>
+            <ul style="margin-left: 20px; list-style-type: disc;">
+                <li>Deloitte. (2022). Global Human Capital Trends.</li>
+                <li>Gallup. (2023). State of the Global Workplace Report.</li>
+                <li>Harvard Business Review. (2022). Why Employees Stay.</li>
+                <li>Payscale. (2023). Compensation Best Practices Report.</li>
+                <li>SHRM. (2023). Employee Retention Strategies.</li>
+            </ul>
+        </article>
+    </section class="college">
+    <h2 style="font-size: 2rem; text-align: center; margin-bottom: 20px; color: #333; border: 2px solid #ffffff; padding-bottom: 10px;
+        margin-top: 6%;
+        border-radius: inherit;">
+        All About My College </h2>
+    </div>
+    <div class="college-section"
+        style="width: 100%; margin: 0 auto; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 0 15px rgba(211, 101, 101, 0.1);">
+        <div class="slider-container" style="position: relative; overflow: hidden;">
+            <button class="nav-button left" onclick="prevSlide()"
+                style="position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.5); border: none; color: white; padding: 10px; font-size: 18px; cursor: pointer; border-radius: 50%; z-index: 1; left: 10px;">&#10094;</button>
+            <div class="slider" id="slider" style="display: flex; transition: transform 0.5s ease-in-out;">
+                <div class="slide" style="min-width: 100%; text-align: center;">
+                    <img src="freshersday celeration.jpg" alt="Image 1"
+                        style="width: 100%; height: 500px; object-fit: cover; border-bottom: 2px solid #ccc;">
+                    <div class="caption" style="padding: 15px; font-size: 16px; background: #f9f9f9;">This is the day,
+                        when the institution's (<b> Adikavi Nannaya University Tadepalligudem Campus's </b>) teaching
+                        staff of MBA Department and the MBA second years(My seniors) welcomes us to the institution by
+                        Freshersday celebration program. </div>
+                </div>
+                <div class="slide" style="min-width: 100%; text-align: center;">
+                    <img src="mba boys.jpg" alt="Image 1"
+                        style="width: 100%; height: 500px; object-fit: cover; border-bottom: 2px solid #ccc;">
+                    <div class="caption" style="padding: 15px; font-size: 16px; background: #f9f9f9;">"The photograph
+                        captures a joyful moment on the stage of the 'Aarambh' program, featuring MBA students. The
+                        group, identified as 'MBA rockstars,' is dressed in vibrant Indian cultural attire, reflecting
+                        the celebratory occasion of their freshers' day. Their expressions and body language radiate
+                        happiness and excitement, indicative of the welcoming and celebratory atmosphere of the event.
+                        The backdrop likely showcases elements of the 'Aarambh' program's stage setup, possibly
+                        including decorations or banners appropriate for a freshers' day celebration. The
+                        embracing of tradition as these MBA students mark the beginning of their academic journey."
+                    </div>
+                </div>
+                <div class="slide" style="min-width: 100%; text-align: center;">
+                    <img src="speech on orientation program.jpg" alt="Image 2"
+                        style="width: 100%; height: 500px; object-fit: cover; border-bottom: 2px solid #ccc;">
+                    <div class="caption" style="padding: 15px; font-size: 16px; background: #f9f9f9;">"During the
+                        institution's orientation program, I had the opportunity to address the attendees. My speech
+                        involved a formal introduction of myself and a sharing of my initial thoughts and responses
+                        regarding the institution. It was a moment to connect with fellow participants and offer my
+                        perspective as a new member of the community."</div>
+                </div>
+                <div class="slide" style="min-width: 100%; text-align: center;">
+                    <img src="TBR.jpg" alt="Image 3"
+                        style="width: 100%; height: 500px; object-fit: cover; border-bottom: 2px solid #ccc;">
+                    <div class="caption" style="padding: 15px; font-size: 16px; background: #f9f9f9;"> "MBA boys,"
+                        posing for a photo with Tanabuddhi Bhogeswar Rao, after attending a program on entrepreneurship.
+                        The program, <b> How to become an enterpreneur </b> which is inpired by the words of
+                        <b>Tanabuddhi Bhogeswar Rao </b>, founder of <b>TBR Infra Private Limited</b>, have provided
+                        valuable insights and inspiration for the students, sparking their entrepreneurial ambitions.
+                    </div>
+                </div>
+                <div class="slide" style="min-width: 100%; text-align: center;">
+                    <img src="speech on womens day.jpg" alt="Image 3"
+                        style="width: 100%; height: 500px; object-fit: cover; border-bottom: 2px solid #ccc;">
+                    <div class="caption" style="padding: 15px; font-size: 16px; background: #f9f9f9;">"The image
+                        captures a moment during an International Women's Day event where I am delivering a speech.
+                        Standing on the dias and holding a mic, I address the audience with my thoughts and perspectives
+                        relevant to the significance of International Women's Day."
+
+
+                    </div>
+                </div>
+                <div class="slide" style="min-width: 100%; text-align: center;">
+                    <img src="speech on welcoming the juniors.jpg" alt="Image 3"
+                        style="width: 100%; height: 500px; object-fit: cover; border-bottom: 2px solid #ccc;">
+                    <div class="caption" style="padding: 15px; font-size: 16px; background: #f9f9f9;">"Standing and
+                        looked out at the eager faces of our new junior students. A warm smile spread across my face as
+                        I began my welcoming speech. It was a moment to extend a friendly hand and share some initial
+                        words of encouragement and guidance as they embarked on their academic journey with us. I aimed
+                        to create a sense of excitement and belonging, assuring them that they had joined a supportive
+                        and vibrant community. My words touched upon the opportunities that lay ahead and offered a
+                        glimpse into the enriching experiences they could look forward to."</div>
+                </div>
+                <div class="slide" style="min-width: 100%; text-align: center;">
+                    <img src="mba 2nd yar with alumini.jpg" alt="Image 3"
+                        style="width: 100%; height: 500px; object-fit: cover; border-bottom: 2px solid #ccc;">
+                    <div class="caption" style="padding: 15px; font-size: 16px; background: #f9f9f9;"><b>SNAPSHOT:</b>
+                        blend of experience and enthusiasm: MBA Alumni join the Second Years in celebrating Freshers'
+                        Day and welcoming the newest members of our MBA family.</div>
+                </div>
+                <div class="slide" style="min-width: 100%; text-align: center;">
+                    <img src="participated in fest.jpg" alt="Image 3"
+                        style="width: 100%; height: 500px; object-fit: cover; border-bottom: 2px solid #ccc;">
+                    <div class="caption" style="padding: 15px; font-size: 16px; background: #f9f9f9;">The stage was set,
+                        the energy was high, and the memories were made at the MBA Fest at C.R. Reddy College of
+                        Engineering.participants receiving certificates, A memorable moment from the MBA Fest at C.R.
+                        Reddy College of Engineering.</div>
+                </div>
+            </div>
+            <button class="nav-button right" onclick="nextSlide()"
+                style="position: absolute; top: 50%; transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.5); border: none; color: white; padding: 10px; font-size: 18px; cursor: pointer; border-radius: 50%; z-index: 1; right: 10px;">&#10095;</button>
+        </div>
+    </div>
+
+    <script>
+        const slider = document.getElementById("slider");
+        const slides = document.querySelectorAll(".slide");
+        let currentIndex = 0;
+
+        function updateSlidePosition() {
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            if (currentIndex < slides.length - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            updateSlidePosition();
+        }
+
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = slides.length - 1;
+            }
+            updateSlidePosition();
+        }
+    </script>
+
+    <!-- Combined Container for Side-by-Side Layout -->
+    <div class="work-edu-container" style="
+    display: flex;
+    gap: 20px;
+    margin: 40px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+">
+
+        <!-- Work Experience Section (Left) -->
+        <section id="Work Experience" class="section" style="
+        flex: 1;
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    ">
+            <h1 style="
+            border: 2px solid rgba(97, 91, 91, 0.336);
+            background-color: black;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            text-align: left;
+            margin-bottom: 20px;
+        ">
+                Work Experience
+            </h1>
+            <div>
+                <h3>HR Intern</h3>
+                <p>Hr intern at Sri Meena Foods Pvt Ltd. | 3 months</p>
+                <img src="meenafoods.jpg" alt="company" style="object-fit: fill; width: 100%; height: 300px;">
+                <h4><b>Description</b></h4>
+                <p>Conducted an in-depth analysis of employee retention trends, identifying key factors influencing
+                    turnover and helped Sri Meena Foods to tackle their employee turnover. After analyzing the reasons
+                    people were
+                    leaving, I put forward some strategies that led to a significant drop.
+                    Responsible for employe engagement, supportive shift differentials and handled employee interests,
+                    and maintained employee records.
+                </p>
+                <!-- Add more experiences here if needed -->
+            </div>
+        </section>
+
+        <!-- Education Section (Right) -->
+        <section id="education" class="section" style="
+        flex: 1;
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    ">
+            <h1 style="
+            border: 2px solid rgba(97, 91, 91, 0.336);
+            background-color: black;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            text-align: left;
+            margin-bottom: 20px;
+        ">
+                Education
+            </h1>
+            <div class="education-grid">
+                <div class="education-item">
+                    <h3>Pursuing MBA (HR & MARKETING)</h3>
+                    <p>Adikavi Nannaya University, Tadepalligudem | 2025</p>
+                    <p>CGPA: 7.6 (2nd semester)</p>
+                </div>
+                <div class="education-item">
+                    <h3>BSc (Computer Science)</h3>
+                    <p>Dr B R Ambedkar University (Etcherla), Srikakulam | 2019-2022</p>
+                    <p>CGPA: 8.58</p>
+                </div>
+                <div class="education-item">
+                    <h3>Intermediate (MPC)</h3>
+                    <p>Board of Intermediate Education Andhra Pradesh, Kanchili | 2017-2019</p>
+                    <p>CGPA: 9.28</p>
+                </div>
+                <div class="education-item">
+                    <h3>SSC</h3>
+                    <p>Board of Secondary Education Andhra Pradesh, MS Palli | 2016-2017</p>
+                    <p>CGPA: 8.7</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <style>
+        /* Your existing education grid styles */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .education-item {
+            background-color: rgb(235, 228, 228);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .education-item h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .education-item p {
+            color: #666;
+            line-height: 1.2;
+            margin-bottom: 5px;
+        }
+        .education-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .work-edu-container {
+                flex-direction: column;
+            }
+
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2
+                style="border: 2px solid rgba(97, 91, 91, 0.336); background-color: black; color: white; padding: 5px; border-radius: 5px; text-align: left; text-size-adjust: auto ;">
+                My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill">
+                    <i class="far fa-file-excel"></i>
+                    <h3>Microsoft Excel</h3>
+                    <p>Efficient Attendance Management</p>
+                </div>
+                <div class="skill">
+                    <i class="far fa-file-word"></i>
+                    <h3>Microsoft Word</h3>
+                    <p>Capable of creating Letter heads, Documents etc.</p>
+                </div>
+                <div class="skill">
+                    <i class="far fa-file-powerpoint"></i>
+                    <h3>Microsoft Powerpoint</h3>
+                    <p>Creative Animations, Adds, Presentations.</p>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML5</h3>
+                    <p>Semantic markup and structure</p>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-css3-alt"></i>
+                    <h3>CSS3</h3>
+                    <p>Styling and responsive design</p>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-js"></i>
+                    <h3>JavaScript</h3>
+                    <p>Basic interactivity </p>
+                </div>
+                <div class="skill">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Responsive Design</h3>
+                    <p>Mobile-friendly websites</p>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2
+                style="border: 2px solid rgba(97, 91, 91, 0.336); background-color: black; color: white; padding: 5px; border-radius: 5px; text-align: left; text-size-adjust: auto ;">
+                My Projects</h2>
+            <div class="projects-grid">
+                <div class="project" style="background-color: rgb(235, 228, 228);">
+                    <h3>Employee Retention</h3>
+                    <p>Identified the Retention trends with reference to SRI MEENA FOODS PVT LTD.</p>
+                </div>
+                <div class="project" style="background-color: rgb(235, 228, 228);">
+                    <h3>Personal Blog</h3>
+                    <p>A responsive blog website built with HTML and CSS.</p>
+                </div>
+                <div class="project" style="background-color: rgb(235, 228, 228);">
+                    <h3>Business Website</h3>
+                    <p>A modern business landing page with clean design.</p>
+                </div>
+                <div class="project" style="background-color: rgb(235, 228, 228);">
+                    <h3>Portfolio Template</h3>
+                    <p>A customizable portfolio template for creatives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2
+                style="border: 2px solid rgba(97, 91, 91, 0.336); background-color: black; color: white; padding: 5px; border-radius: 5px; text-align: left; text-size-adjust: auto ;">
+                Contact Me</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> mrdeep09185@gmail.com</p>
+                    <p><i class="fas fa-phone"></i>+91 9505818048</p>
+                    <div class="social-links">
+                        <a href="www.linkedin.com/in/pradeep-pradhan"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://wa.me/9505818048"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/impradeep.06/?__pwa=1"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message
+
+
+                        <button id="backToTop"
+                            style="display:none; position:fixed; bottom:20px; right:20px; padding:10px; background:black; color:white; border:none; border-radius:5px; cursor:pointer;">
+                            Back to Top
+                        </button>
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function () {
+                                const backToTopButton = document.getElementById('backToTop');
+                                window.addEventListener('scroll', function () {
+                                    if (window.scrollY > 100) {
+                                        backToTopButton.style.display = 'block';
+                                    } else {
+                                        backToTopButton.style.display = 'none';
+                                    }
+                                });
+                                backToTopButton.addEventListener('click', function () {
+                                    window.scrollTo({
+                                        top: 0,
+                                        behavior: 'smooth'
+                                    });
+                                });
+                            });
+                        </script>
+                    </button>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const form = document.querySelector('.contact-form');
+                            form.addEventListener('submit', function (e) {
+                                const name = form.querySelector('input[type="text"]');
+                                const email = form.querySelector('input[type="email"]');
+                                const message = form.querySelector('textarea');
+                                let errorMessage = '';
+                                if (!name.value.trim()) {
+                                    errorMessage += 'Please enter your name.\n';
+                                }
+                                if (!email.value.trim() || !email.value.includes('@')) {
+                                    errorMessage += 'Please enter a valid email.\n';
+                                }
+                                if (!message.value.trim()) {
+                                    errorMessage += 'Please enter your message.\n';
+                                }
+                                if (errorMessage) {
+                                    e.preventDefault();
+                                    alert(errorMessage);
+                                }
+                            });
+                        });
+                    </script>
+
+                </form>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Pradeep Pradhan. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').slice(1);
+                    const targetElement = document.getElementById(targetId);
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            function updateActiveLink() {
+                let index = sections.length;
+                while (--index && window.scrollY + 50 < sections[index].offsetTop) { }
+                navLinks.forEach(link => link.classList.remove('active'));
+                navLinks[index].classList.add('active');
+            }
+            window.addEventListener('scroll', updateActiveLink);
+            updateActiveLink();
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Select all sections
+            const sections = document.querySelectorAll('section');
+
+            // Function to check if section is in viewport
+            function checkInView() {
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                        // Apply animation when in view
+                        section.style.opacity = '1';
+                        section.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+
+            // Add initial CSS to hide sections
+            sections.forEach(section => {
+                section.style.opacity = '0'; // Initially hidden
+                section.style.transform = 'translateY(50px)'; // Slightly moved down
+                section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out'; // Smooth transition
+            });
+
+            // Run the check on scroll
+            window.addEventListener('scroll', checkInView);
+
+            // Run the check once on page load
+            checkInView();
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('section');
+
+            // Function to handle the scroll animations
+            function handleScrollAnimation() {
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+                    // Apply animation when the section is visible
+                    if (isVisible) {
+                        section.style.opacity = '1';
+                        section.style.transform = 'translateY(0)';
+                    } else {
+                        section.style.opacity = '0';
+                        section.style.transform = 'translateY(30px)';
+                    }
+                });
+            }
+
+            // Initialize all sections with the hidden state
+            sections.forEach(section => {
+                section.style.opacity = '0'; // Start hidden
+                section.style.transform = 'translateY(30px)'; // Start slightly below position
+                section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out'; // Smooth transition
+            });
+
+            // Run the animation on scroll and page load
+            window.addEventListener('scroll', handleScrollAnimation);
+            handleScrollAnimation(); // Trigger the animation initially
+        });
+    </script>
+    </body>
+
+</html>
